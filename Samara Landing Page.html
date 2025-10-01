@@ -6,6 +6,128 @@
     <title>Samara Landing Page</title>
     <link rel="stylesheet" href="samara.css">
 </head>
+<script>
+  const container = document.querySelector('.carousel-container');
+  const track = document.getElementById('carousel');
+  const captionEl = document.getElementById('caption');
+  const items = Array.from(track.querySelectorAll('.item'));
+  let index = 0;
+
+  function setActive(i) {
+    items.forEach((it, n) => it.classList.toggle('active', n === i));
+    captionEl.textContent = items[i].querySelector('img').alt;
+  }
+
+  // Center the slide at items[i] so neighbors peek on both sides
+  function centerSlide(i) {
+    const slide = items[i];
+
+    // distance from the track's left edge to the slide center
+    const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+
+    // where the container's visual center is
+    const containerCenter = container.clientWidth / 2;
+
+    // we want slideCenter to line up with containerCenter
+    const targetTranslateX = -(slideCenter - containerCenter);
+
+    // apply transform
+    track.style.transform = `translateX(${targetTranslateX}px)`;
+  }
+
+  function update() {
+    centerSlide(index);
+    setActive(index);
+  }
+
+  // click areas
+  document.querySelector('.click-left').addEventListener('click', () => {
+    index = (index > 0) ? index - 1 : items.length - 1;
+    update();
+  });
+
+  document.querySelector('.click-right').addEventListener('click', () => {
+    index = (index < items.length - 1) ? index + 1 : 0;
+    update();
+  });
+
+  // keep centered on resize (e.g., when rotating phone)
+  window.addEventListener('resize', () => {
+    // read current transform and re-center without animation glitch
+    const prev = track.style.transition;
+    track.style.transition = 'none';
+    update();
+    // force reflow then restore transition
+    requestAnimationFrame(() => {
+      track.style.transition = prev || 'transform 500ms ease';
+    });
+  });
+
+  // initial state
+  update();
+</script>
 <body>
+    <header class="navbar">
+    <div class="top-bar">
+        <img src="logo.svg" alt="Logo" class="logo">
+        <nav class="nav-links">
+            <a href="Product.html">Backyard</a>
+            <a href="Solutions.html">Models</a>
+            <a href="Resources.html">How it works</a>
+            <a href="Company.html">Financing</a>
+            <a href="Company.html">Showrooms</a>
+            <div class="burger">☰</div>
+        </nav>
+        <div class="nav-btns">
+            <button class="login-btn">Design yours</button>
+        </div>
+    </header>
+    <section class="main-head">
+        <div class="main-heading">
+         <p class="head-1">Support for homeowners in fire-affected Southern California communities</p>
+         <div>
+            <button class="login-btn-2">Find out more</button>
+         </div>
+        </div>
+    </section>
+    <section class="card-section">
+  <div class="card">
+    <div class="card-text">
+      <p class="p-one">Small living,<br> supersized.</h2>
+      <div>
+        <img src="hero-xl-10-title.svg" alt="Backyard XL 10" class="xl10-img">
+        <p class="p-two">Introducing Backyard XL 10:<br> Two bedrooms, two baths.<br> 950 square feet.</p>
+        <button class="login-btn-3">Learn more <span class="arrow">→</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="house-text">
+  <h1>Backyard <img src="intro-studio-800.png" alt="house icon" class="inline-icon"> is the<br> super simple, smartly customizable, <img src="intro-xl-800.png" alt="house icon" class="inline-icon"> all-new ADU <img src="intro-twobed-800.png" alt="house icon" class="inline-icon-2"> from Samara.
+  </h1>
+  <h2>We handle everything, from installation to financing.<br><span class="grey-h2">Available now in California.</span></h2>
+  <p class="p-question">Not in California? <span><a class="light-p" href="Samara Landing Page.html">Tell us where to build next</a></span></p>
+</section>
+<section>
+  <div class="carousel-container">
+  <!-- click areas -->
+  <div class="click-left" aria-label="Previous slide"></div>
+  <div class="click-right" aria-label="Next slide"></div>
+
+  <!-- track -->
+  <div class="carousel" id="carousel">
+    <div class="item"><img src="first-panel.jpg" alt="A calm lakeside home"></div>
+    <div class="item"><img src="second-panel.jpg" alt="Modern cabin in the woods"></div>
+    <div class="item"><img src="third-panel.jpg" alt="Minimal tiny house by pool"></div>
+    <div class="item"><img src="fourth-panel.jpg" alt="Luxury studio suite exterior"></div>
+    <div class="item"><img src="fifth-panel.jpg"Eco-friendly solar house"></div>
+  </div>
+</div>
+
+<div class="caption" id="caption">A calm lakeside home</div>
+
+<!-- Put the script right before </body> (best) or wrap in DOMContentLoaded if above <header> -->
+
+</section>
 </body>
 </html>
