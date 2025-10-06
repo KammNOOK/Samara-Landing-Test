@@ -6,66 +6,7 @@
     <title>Samara Landing Page</title>
     <link rel="stylesheet" href="samara.css">
 </head>
-<script>
-  const container = document.querySelector('.carousel-container');
-  const track = document.getElementById('carousel');
-  const captionEl = document.getElementById('caption');
-  const items = Array.from(track.querySelectorAll('.item'));
-  let index = 0;
-
-  function setActive(i) {
-    items.forEach((it, n) => it.classList.toggle('active', n === i));
-    captionEl.textContent = items[i].querySelector('img').alt;
-  }
-
-  // Center the slide at items[i] so neighbors peek on both sides
-  function centerSlide(i) {
-    const slide = items[i];
-
-    // distance from the track's left edge to the slide center
-    const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
-
-    // where the container's visual center is
-    const containerCenter = container.clientWidth / 2;
-
-    // we want slideCenter to line up with containerCenter
-    const targetTranslateX = -(slideCenter - containerCenter);
-
-    // apply transform
-    track.style.transform = `translateX(${targetTranslateX}px)`;
-  }
-
-  function update() {
-    centerSlide(index);
-    setActive(index);
-  }
-
-  // click areas
-  document.querySelector('.click-left').addEventListener('click', () => {
-    index = (index > 0) ? index - 1 : items.length - 1;
-    update();
-  });
-
-  document.querySelector('.click-right').addEventListener('click', () => {
-    index = (index < items.length - 1) ? index + 1 : 0;
-    update();
-  });
-
-  // keep centered on resize (e.g., when rotating phone)
-  window.addEventListener('resize', () => {
-    // read current transform and re-center without animation glitch
-    const prev = track.style.transition;
-    track.style.transition = 'none';
-    update();
-    // force reflow then restore transition
-    requestAnimationFrame(() => {
-      track.style.transition = prev || 'transform 500ms ease';
-    });
-  });
-
-  // initial state
-  update();
-</script>
+<script src="samara.js"></script>
 <body>
     <header class="navbar">
     <div class="top-bar">
@@ -108,26 +49,249 @@
   <h2>We handle everything, from installation to financing.<br><span class="grey-h2">Available now in California.</span></h2>
   <p class="p-question">Not in California? <span><a class="light-p" href="Samara Landing Page.html">Tell us where to build next</a></span></p>
 </section>
-<section>
-  <div class="carousel-container">
-  <!-- click areas -->
-  <div class="click-left" aria-label="Previous slide"></div>
-  <div class="click-right" aria-label="Next slide"></div>
-
-  <!-- track -->
-  <div class="carousel" id="carousel">
-    <div class="item"><img src="first-panel.jpg" alt="A calm lakeside home"></div>
-    <div class="item"><img src="second-panel.jpg" alt="Modern cabin in the woods"></div>
-    <div class="item"><img src="third-panel.jpg" alt="Minimal tiny house by pool"></div>
-    <div class="item"><img src="fourth-panel.jpg" alt="Luxury studio suite exterior"></div>
-    <div class="item"><img src="fifth-panel.jpg"Eco-friendly solar house"></div>
+<section class="container">
+	<div class="slider-wrapper">
+		<div class="slider">
+			<img id="slide-1" src="first-panel.jpg" alt="3D rendering of an imaginary orange planet in space" />
+			<img id="slide-2" src="second-panel.jpg" alt="3D rendering of an imaginary green planet in space" />
+			<img id="slide-3" src="third-panel.jpg" alt="3D rendering of an imaginary blue planet in space" />
+      <img id="slide-4" src="fourth-panel.jpg" alt="3D rendering of an imaginary blue planet in space" />
+      <img id="slide-5" src="fifth-panel.jpg" alt="3D rendering of an imaginary blue planet in space" />
+		</div>
+		<div class="slider-nav">
+			<a href="#slide-1"></a>
+			<a href="#slide-2"></a>
+			<a href="#slide-3"></a>
+      <a href="#slide-4"></a>
+      <a href="#slide-5"></a>
+		</div>
+	</div>
+</section>
+<section class="partners">
+    <div>
+        <h2>Rent it. Divide it. Work there. Or live in it.<br><span class="h2-special">Unlock the potential of your yard.</span></h2>
+    </div>
+    <div class="as-seen-in">
+        <p>As seen in:</p>
+        <img src="fastcompany.svg" alt="">
+        <img src="bloomberg.svg" alt="">
+        <img src="wsj.svg" alt="">
+        <img src="wallpaper.svg" alt="">
+    </div>
+    <div class="showroom">
+        <div class="showroom1">
+            <p>Experience Backyard in Person.<br> Visit a showroom <span class="arrow">→</span></p>
+        </div>
+        <div class="showroom2">
+            <video autoplay muted loop src="Samara - Backyard Homes and ADUs.mp4"></video>
+            <p>Learn how we squeeze a whole house into<br> your yard.<br> How it works <span class="arrow">→</span></p>
+        </div>
+    </div>
+</section>
+<section class="single-vid">
+    <video autoplay muted loop src="Samara - Backyard Homes and ADUs 2.mp4"></video>
+</section>
+<section class="showroom3">
+    <div>
+        <h2>Five sizes.<span class="h3-special">Tons of possibility.</span></h2>
+    </div>
+    <p>One bedroom<br><span class="bedroom-select-p">The one and only for everything.</span></p>
+</section>
+<section class="container">
+	<div class="slider-wrapper">
+		<div class="slider">
+			<img id="slide-6" src="first-panel.jpg" alt="3D rendering of an imaginary orange planet in space" />
+			<img id="slide-7" src="second-panel.jpg" alt="3D rendering of an imaginary green planet in space" />
+			<img id="slide-8" src="third-panel.jpg" alt="3D rendering of an imaginary blue planet in space" />
+      <img id="slide-9" src="fourth-panel.jpg" alt="3D rendering of an imaginary blue planet in space" />
+      <img id="slide-10" src="fifth-panel.jpg" alt="3D rendering of an imaginary blue planet in space" />
+		</div>
+		<div class="slider-nav">
+			<a href="#slide-6"></a>
+			<a href="#slide-7"></a>
+			<a href="#slide-8"></a>
+      <a href="#slide-9"></a>
+      <a href="#slide-10"></a>
+		</div>
+	</div>
+</section>
+<section class="steps-section">
+  <div class="steps-header">
+    <h2>Get Backyard in<br>four simple steps.</h2>
+    <p>And as few as eight weeks on site.</p>
   </div>
-</div>
 
-<div class="caption" id="caption">A calm lakeside home</div>
+  <div class="steps-grid">
+    <div class="step">
+      <span class="step-badge">01</span>
+      <h3>Design yours</h3>
+      <p>Tailor your unit with a layout and customizations that reflect your style and needs.</p>
+      <img src="steps-configure-630.webp" alt="">
+    </div>
+    <div class="step">
+      <span class="step-badge">02</span>
+      <h3>Sign off</h3>
+      <p>We visit your site to create a complete proposal for the work required to install Backyard.</p>
+      <img src="steps-get-your-keys-portrait-1100.webp" alt="">
+    </div>
+  </div>
+</section>
+<section class="steps-section">
+  <div class="steps-grid-2">
+    <div class="step">
+      <span class="step-badge">03</span>
+      <h3>Design yours</h3>
+      <p>Tailor your unit with a layout and customizations that reflect your style and needs.</p>
+      <img src="steps-configure-630.webp" alt="">
+    </div>
+    <div class="step">
+      <span class="step-badge">04</span>
+      <h3>Sign off</h3>
+      <p>We visit your site to create a complete proposal for the work required to install Backyard.</p>
+      <img src="steps-get-your-keys-portrait-1100.webp" alt="">
+    </div>
+    <div class="steps-header-2">
+       <h2 class="smaller">Want the details?</h2>
+       <p class="smaller2">Learn more about our fast, easy<br> installation process.</p>
+    </div>
 
-<!-- Put the script right before </body> (best) or wrap in DOMContentLoaded if above <header> -->
+  </div>
+</section>
+<section class="container-2">
+	<div class="slider-wrapper-2">
+		<div class="slider">
+			<img id="slide-11" src="__xl-2880 f1.webp" alt="3D rendering of an imaginary orange planet in space" />
+			<img id="slide-12" src="__xl-2880 f2.webp" alt="3D rendering of an imaginary green planet in space" />
+			<img id="slide-13" src="__xl-2880 f3.webp" alt="3D rendering of an imaginary blue planet in space" />
+      <img id="slide-14" src="__xl-2880 f4.webp" alt="3D rendering of an imaginary blue planet in space" />
+      <img id="slide-15" src="__xl-10-2880 f5.webp" alt="3D rendering of an imaginary blue planet in space" />
+		</div>
+		<div class="slider-nav">
+			<a href="#slide-11"></a>
+			<a href="#slide-12"></a>
+			<a href="#slide-13"></a>
+      <a href="#slide-14"></a>
+      <a href="#slide-15"></a>
+		</div>
+	</div>
+</section>
+<section class="flowers">
+  <p>A lot can happen<br>with a little space.</p>
+  <div class="slider-2">
+			<img id="slide-16" src="uses-office-1080.webp" alt="3D rendering of an imaginary orange planet in space" />
+			<img id="slide-17" src="uses-income-1080.webp" alt="3D rendering of an imaginary green planet in space" />
+			<img id="slide-18" src="uses-family-1080.webp" alt="3D rendering of an imaginary blue planet in space" />
+      <img id="slide-19" src="uses-business-1080.webp" alt="3D rendering of an imaginary blue planet in space" />
+      <img id="slide-20" src="uses-dreams-1080.webp" alt="3D rendering of an imaginary blue planet in space" />
+		</div>
+		<div class="slider-nav-2">
+			<a href="#slide-16"></a>
+			<a href="#slide-17"></a>
+			<a href="#slide-18"></a>
+      <a href="#slide-19"></a>
+      <a href="#slide-20"></a>
+		</div>
+</section>
+<section class="sky-sect">
+  <div class="sky-box">
+    <p class="heading">2X<br><span class="heading-edit">more effiicient</span></p>
+    <p class="subtext">Over 2x more energy-efficient than an<br> equivalently-sized home.</p>
+  </div>
+  <div class="sky-box">
+    <p class="heading">0kWh<br><span class="heading-edit">net grid utilization</span></p>
+    <p class="subtext">As few as 0 kWh drawn from the grid annually<br> (net) with optional solar arrays.</p>
+  </div>
+</section>
+<section class="sky-sect-2">
+  <div class="sky-box-2">
+    <p class="heading-2">High performance prefab</p>
+    <p class="subtext">Backyard is factory assembled using our best-in-class<br> construction system designed for the long haul.</p>
+  </div>
+</section>
+<section class="duo-sec">
+  <section class="sky-sect-3">
+  <div class="sky-box-3">
+    <p class="heading-2">Fire resistant by design</p>
+    <p class="subtext-3">Smart design and superior materials create a home that's<br>resilient to fire, smoke, and other hazards.</p>
+  </div>
+  </section>
+  <section class="sky-sect-4">
+  <div class="sky-box-4">
+    <p class="heading-2">Net zero solar roof</p>
+    <p class="subtext-4">Save on energy costs every month and even offset<br>the power consumption of your main home.</p>
+  </div>
+  </section>
+</section>
+<section class="available">
+  <div>
+    <p class="avail-head">Available in California.<br><span class="avail-head-edit">Starting at $152k<br>plus installation.</span></p>
+    <p class="design-head">Design yours <span class="arrow">→</span></p>
+    <p class="avail-q">Not in California? <span avail-q-edit>Tell us where to build next </span></p>
+  </div>
+  <div>
+    <img src="onebedroom.frontdoors.solarfull.basebonewhite.roofdarkbronze.front-4016.png" alt="">
+  </div>
+</section>
+<section>
+  <div class="showroom-sec">
+        <div class="showroom2-sec">
+            <p>Seeing is believing.<br> Find a showroom <span class="arrow">→</span></p>
+        </div>
+        <div class="showroom3-sec">
+            <p>Backyard Multiunit.<br> For developers <span class="arrow">→</span></p>
+        </div>
+        <div class="showroom4-sec">
+            <p>Make Backyard yours.<br> Configure in 3D <span class="arrow">→</span></p>
+        </div>
+        <div class="showroom5-sec">
+            <p>Fire resistant by design.<br> Learn more <span class="arrow">→</span></p>
+        </div>
+    </div>
+</section>
+<section>
+  <footer class="site-footer">
+    <div class="footer-grid-2">
+      
+      <nav class="links-col">
+        <p class="col-title">Samara</p>
+        <ul class="links">
+          <li><a href="#">News</a></li>
+          <li><a href="#">Insights</a></li>
+          <li><a href="#">Jobs</a></li>
+          <li><a href="#">Showrooms</a></li>
+          <li><a href="#">For Developers</a></li>
+        </ul>
+      </nav>
 
+      <nav class="links-col">
+        <p class="col-title">Backyard</p>
+        <ul class="links">
+          <li><a href="#">Models</a></li>
+          <li><a href="#">Design yours</a></li>
+          <li><a href="#">How it works</a></li>
+          <li><a href="#">Financing</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Local guides</a></li>
+        </ul>
+      </nav>
+
+      <nav class="links-col">
+        <p class="col-title">Social</p>
+        <ul class="links">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </nav>
+      
+      <nav class="links-col-2">
+        <p class="col-title-2">Have questions?</p>
+        <ul class="links">
+          <div class="button-group">
+           <button class="startfree-btn">Contact us</button>
+          </div>
+        <p class="col-title-3">Get updates<br><span class="email-req">Drop us your email to learn what's next.</span></p>
+  </footer>
 </section>
 </body>
 </html>

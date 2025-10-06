@@ -213,74 +213,661 @@ h2{
 
 
 
-
-
-
-
-/* container clips the track, so we can “peek” neighbors */
-.carousel-container {
-  position: relative;
-  width: min(1100px, 92vw);
-  margin: 24px auto;
-  overflow: hidden;
+.container {
+	padding: 2rem;
+  background-color: #222209;
 }
 
-/* the horizontal track */
-.carousel {
-  display: flex;
-  align-items: center;
-  gap: 20px;                /* space between slides so the peek is obvious */
-  will-change: transform;
-  transition: transform 500ms ease;
-  padding: 0 10px;          /* tiny side padding so first/last can still peek */
-  box-sizing: border-box;
+.slider-wrapper {
+	position: relative;
+	max-width: 1600px;
+	margin: 0 auto;
 }
 
-/* each slide is < 100% so neighbors can show */
-.item {
-  flex: 0 0 78%;            /* main trick: less than 100% */
-  max-width: 78%;
-  box-sizing: border-box;
+.slider {
+	display: flex;
+	aspect-ratio: 16 / 9;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+	border-radius: 0.5rem;
+	-ms-overflow-style: none; /* Hide scrollbar IE and Edge */
+	scrollbar-width: none; /* Hide scrollbar Firefox */
 }
 
-.item img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  opacity: 0.7;
-  transform: scale(0.96);
-  transition: opacity 300ms ease, transform 300ms ease;
+/* Hide scrollbar for Chrome, Safari and Opera */
+.slider::-webkit-scrollbar {
+	display: none;
 }
 
-/* “active” slide feels in focus */
-.item.active img {
-  opacity: 1;
-  transform: scale(1);
+.slider img {
+	flex: 1 0 100%;
+	scroll-snap-align: start;
+	object-fit: cover;
 }
 
-/* invisible click zones */
-.click-left, .click-right {
-  position: absolute;
-  top: 0;
-  width: 50%;
-  height: 100%;
-  cursor: pointer;
-  z-index: 2;
+.slider-nav {
+	display: flex;
+	column-gap: 1rem;
+	position: absolute;
+	bottom: 1.25rem;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 1;
 }
-.click-left { left: 0; }
-.click-right { right: 0; }
 
-/* caption */
-.caption {
-  text-align: center;
+.slider-nav a {
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 50%;
+	background-color: #fff;
+	opacity: 0.75;
+	transition: opacity ease 250ms;
+}
+
+.slider-nav a:hover {
+	opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.partners{
+    padding: 210px 0px;
+    align-items: center;
+    text-align: center;
+    background-color: #222209;
+}
+
+.partners h2{
+    font-size: 55px;
+    font-weight: lighter;
+    color: white;
+}
+
+.partners .h2-special{
+    color: #717060;
+}
+
+.as-seen-in{
+    display: inline-flex;
+    gap: 20px;
+    background-color: #212109;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    border-radius: 10px;
+}
+
+.as-seen-in p{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #494935;
+    font-weight: 600;
+}
+
+.showroom{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 150px;
+}
+
+.showroom p{
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.showroom1{
+    background-image: url(samara\ showroom.avif);
+    width: 600px;
+    height: 400px;
+    border-radius: 10px;
+}
+
+.showroom2{
+    width: 600px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.showroom2 p{
+  position: relative;   /* keeps it above video */
+  z-index: 1;           /* higher layer */
+  color: white;
+  top: 10%;             /* optional: vertical centering */
+  transform: translateY(-50%);
+
+}
+
+.showroom2 video{
+    position: absolute;
+    object-fit: cover;
+    width: 600px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    object-fit: cover;    /* makes video behave like background-size: cover */
+    z-index: 0;    
+    border-radius: 10px;
+}
+
+.single-vid{
+    padding-left: 350px;
+    padding-bottom: 120px;
+    padding-right: 0px;
+    padding-top: 0px;
+    background-color: #1e3191;
+    margin-bottom: 120px;
+}
+
+.showroom3{
+    align-items: center;
+    text-align: center;
+    background-color: #222209;
+}
+
+.showroom3 h2{
+    font-size: 55px;
+    font-weight: lighter;
+    color: white;
+    padding-top: 1px;
+    padding-bottom: 50px;
+}
+
+.h3-special{
+    color: #717060;
+}
+
+.showroom3 p{
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 30px;
+}
+
+.bedroom-select-p{
+  font-size: 20px;
+  color: #717060;
+  font-weight: bold;
+}
+
+.showroom3 img{
+   width: 150%;
+}
+
+
+
+
+
+
+
+
+
+.steps-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  padding: 80px 100px;
+  color: white;
+}
+
+.steps-header h2 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.steps-header p {
+  font-size: 3rem;
+  line-height: 1.2;
+  color: #888;
   margin-top: 10px;
-  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* make it comfy on small screens */
-@media (max-width: 600px) {
-  .item { flex-basis: 86%; max-width: 86%; }
-  .carousel { gap: 12px; }
+.steps-grid {
+  display: flex;
+  gap: 10px;
 }
 
+.step {
+  width: 41%;
+}
+
+.step-badge {
+  display: inline-block;
+  padding: 12px 12px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.step h3 {
+  font-size: 1.4rem;
+  margin: 10px 0 5px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.step p {
+  color: #aaa;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  max-width: 300px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.step img {
+  width: auto;
+  height: 550px;
+  border-radius: 15px;
+  display: block;
+}
+
+.steps-header-2 .smaller{
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin: 0;
+  text-align: right;
+}
+
+.steps-header-2 .smaller2{
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin: 0;
+  color: #aaa;
+  text-align: right;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.steps-grid-2 {
+  display: flex;
+  gap: 25px;
+  float: right;
+}
+
+.steps-header-2 {
+  text-align: right;
+  justify-content: right;
+}
+
+.slider-wrapper-2 {
+	position: relative;
+	max-width: 1920px;
+}
+
+.flowers{
+  background-image: url(a-lot-can-happen-2880.jpg);
+  border-radius: 10px;
+  width: 1500px;
+  height: 800px;
+  display: flex;
+  margin-left: 200px;
+  margin-top: 100px;
+  padding-top: 50px;
+  gap: 250px;
+  margin-bottom: 100px;
+}
+
+.flowers p{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 50px;
+  font-weight: lighter;
+  padding-left: 170px;
+  padding-top: 300px;
+}
+
+.slider-2 {
+	display: flex;
+	aspect-ratio: 3 / 4;
+  height: 700px;
+  width: 400px;
+  background-color: #202011;
+  padding-top: 50px;
+  padding-left: 200px;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	box-shadow: 0 1.5rem 3rem -0.75rem hsl(34, 16%, 17%);
+	border-radius: 0.5rem;
+	-ms-overflow-style: none; /* Hide scrollbar IE and Edge */
+	scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+
+.slider-2 img{
+  height: 400px;
+  width: auto;
+}
+
+.slider-nav-2 {
+	display: flex;
+	column-gap: 1rem;
+	position: absolute;
+	bottom: 1.25rem;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 1;
+}
+
+.sky-sect{
+  background-image: url(bento-sky-2880.jpg);
+  max-width: 1920px;
+  height: 400px;
+  border-radius: 10px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  padding-right: 200px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sky-box{
+  border-color: #000000;
+  padding: 50px 20px;
+  border: 5px;
+}
+
+.sky-box P{
+  color: #000000;
+}
+
+.heading{
+  font-size: 70px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 30px;
+  padding-bottom: 30px;
+}
+
+.heading-edit{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+}
+
+.subtext{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.sky-sect-2{
+  background-image: url(bento-high-performance-2880.jpg);
+  max-width: 1920px;
+  height: 400px;
+  border-radius: 10px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  padding-right: 200px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sky-box-2{
+  border-color: #000000;
+  margin: 150px 0px 0px 20px;
+  border: 5px;
+  border-radius: 10px;
+  padding-left: 40px;
+  padding-right: 120px;
+  padding-bottom: 0;
+  background-color: #2c280d;
+}
+
+.heading-2{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+}
+
+.duo-sec{
+  display: flex;
+  width: 100%;
+  margin-bottom: 150px;
+}
+
+.sky-sect-3, .sky-sect-4{
+  flex: 1;
+}
+
+.sky-sect-3{
+  background-image: url(air-purification-2880.jpg);
+  max-width: 1920px;
+  height: 400px;
+  border-radius: 10px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  padding-right: 200px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sky-sect-4{
+  background-image: url(net-zero-solar-roof-2880.jpg);
+  max-width: 1920px;
+  height: 400px;
+  border-radius: 10px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  padding-right: 200px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sky-box-3{
+  border-color: #000000;
+  margin: 150px 0px 0px 20px;
+  border: 5px;
+  border-radius: 10px;
+  padding-left: 40px;
+  padding-top: 20px;
+  padding-right: 120px;
+  padding-bottom: 0;
+  background-color: #1e3191;
+  font-weight: bold;
+}
+
+.sky-box-4{
+  border-color: #000000;
+  margin: 150px 0px 0px 20px;
+  border: 5px;
+  border-radius: 10px;
+  padding-left: 40px;
+  padding-top: 20px;
+  padding-right: 120px;
+  padding-bottom: 0;
+  background-color: #997100;
+  font-weight: bold;
+}
+
+.subtext-3{
+  font-family: Arial, Helvetica, sans-serif;
+  color: #5C68aa;
+}
+
+.subtext-4{
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ad8E39;
+}
+
+
+.available{
+  display: flex;
+  background-color: #202011;
+  padding-left: 210px;
+  padding-top: 130px;
+  margin-bottom: 80px;
+}
+
+.available img{
+  float: right;
+}
+
+.avail-head{
+  font-size: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.avail-head-edit{
+  color: #949490;
+}
+
+.design-head{
+  color: #1fa1f6;
+  font-size: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.avail-q{
+  color: #949490;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.avail-q-edit{
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.available img{
+  width: 80%;
+}
+
+.showroom-sec{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 100px;
+  background-color: #202011;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.showroom-sec p{
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.showroom1-sec{
+  background-image: url(samara\ showroom.avif);
+  width: 400px;
+  height: 500px;
+  border-radius: 20px;
+}
+
+.footer-grid-2{
+  background-color: #202011;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr 1fr; 
+  gap:56px;
+  float: inline-start;
+  padding: 0px 60px;
+}
+
+.col-title{
+  font-size: 35px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-left: 38px;
+  color: #67695d;
+}
+
+.col-title-2{
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #E4E2DE;
+  padding-left: 38px;
+}
+
+.col-title-3{
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #E4E2DE;
+}
+
+.links{
+  font-size: 35px;
+  font-family: Arial, Helvetica, sans-serif;
+  list-style: none;
+  line-height: 40px;
+}
+
+.links a{
+  text-decoration: none;
+  color: #E4E2DE;
+}
+
+.startfree-btn{
+    background-color: #0078c6;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 180px;
+    font-size: 14px;
+    cursor: pointer;
+    border-color: transparent;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    margin-right: 40px;
+}
+
+.email-req{
+  color: #67695d;
+}
+
+.showroom2-sec{
+  background-image: url(showroom-portrait-1200.webp);
+  width: 450px;
+  height: 600px;
+  border-radius: 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.showroom3-sec{
+  background-image: url(multiunit-portrait-1200.webp);
+  width: 450px;
+  height: 600px;
+  border-radius: 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.showroom4-sec{
+  background-image: url(configure-portrait-1200.webp);
+  width: 450px;
+  height: 600px;
+  border-radius: 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.showroom5-sec{
+  background-image: url(doorway-fire-resistant-mobile-1200.webp);
+  width: 450px;
+  height: 600px;
+  border-radius: 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
